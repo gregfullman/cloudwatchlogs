@@ -36,6 +36,10 @@ func newCloudwatchClient(config *Config) (*cloudwatchlogs.CloudWatchLogs, error)
 		shouldConfig = false
 	}
 
+	if config.Endpoint != "" {
+		sess.Config.Endpoint = &config.Endpoint
+	}
+
 	if shouldConfig {
 		sess.Config.Credentials = credentials.NewStaticCredentials(
 			config.AccessKey,

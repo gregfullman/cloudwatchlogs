@@ -17,6 +17,7 @@ type Config struct {
 	SecretKey    string `long:"secret-key" description:"AWS secret key"`
 	Region       string `long:"region" description:"AWS region"`
 	Profile      string `long:"profile" description:"AWS CLI profile"`
+	Endpoint     string `long:"endpoint" description:"AWS endpoint, allows for targeting local AWS mock environment"`
 }
 
 // ListenAddr returns the server bind address
@@ -46,6 +47,9 @@ func readConfig() (*Config, error) {
 	}
 	if config.Profile == "" {
 		config.Profile = os.Getenv("AWS_PROFILE")
+	}
+	if config.Endpoint == "" {
+		config.Endpoint = os.Getenv("AWS_ENDPOINT")
 	}
 
 	return config, nil
