@@ -6,10 +6,10 @@ build:
 	go build
 
 docker: build
-	docker build -t sosedoff/cloudwatchlogs .
+	docker build -t greg7fullman/cloudwatchlogs .
 
 docker-release: docker
-	docker push sosedoff/cloudwatchlogs
+	docker push greg7fullman/cloudwatchlogs
 
 release:
 	mkdir -p ./dist
